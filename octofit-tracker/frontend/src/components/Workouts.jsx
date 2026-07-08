@@ -27,11 +27,10 @@ function Workouts() {
 
   const endpoint = useMemo(() => {
     const codespaceName = import.meta.env.VITE_CODESPACE_NAME
-    const baseApiUrl = codespaceName
-      ? `https://${codespaceName}-8000.app.github.dev/api`
-      : 'http://localhost:8000/api'
+    const codespacesEndpoint = `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/workouts/`
+    const localhostEndpoint = 'http://localhost:8000/api/workouts/'
 
-    return `${baseApiUrl}/workouts/`
+    return codespaceName ? codespacesEndpoint : localhostEndpoint
   }, [])
 
   useEffect(() => {
